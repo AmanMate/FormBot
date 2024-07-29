@@ -1,0 +1,95 @@
+.workspace {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 200px;
+    padding: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .side2 {
+    flex: 1;
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  .button-onclick {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button-onclick:hover {
+    background-color: #0056b3;
+  }
+  
+  .start {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .start:hover {
+    background-color: #218838;
+  }
+  
+  .popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .popup-font {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .popup-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .hint {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .close-popup {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .close-popup:hover {
+    background-color: #c82333;
+  }
+  
