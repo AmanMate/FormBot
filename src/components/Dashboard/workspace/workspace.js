@@ -10,6 +10,8 @@ export default function Workspace() {
 
   const navigate = useNavigate();
 
+  const userName = localStorage.getItem("userName") || "User";
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -45,8 +47,8 @@ export default function Workspace() {
   return (
     <div className="workspace-container">
       <div className="dropdown">
-        <button className="dropbtn" onClick={toggleDropdown}>
-          Dewank Rastogi's workspace
+      <button className="dropbtn" onClick={toggleDropdown}>
+          {userName}'s workspace
         </button>
         {isOpen && (
           <div className="dropdown-content">

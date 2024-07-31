@@ -85,6 +85,7 @@ export default function Login() {
     try {
       const result = await loginUser(loginFormData);
       localStorage.setItem("email", loginFormData.email);
+      localStorage.setItem("userName", result.name); // Store user's name
       if (result) {
         navigate("/dashboard");
       }
@@ -96,6 +97,7 @@ export default function Login() {
       }
     }
   };
+  
 
   return (
     <div>
