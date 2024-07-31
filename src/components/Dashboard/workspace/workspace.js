@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './workspace.css'; 
 
@@ -7,10 +7,16 @@ export default function Workspace() {
   const [folders, setFolders] = useState([]);
   const [popupVisible, setPopupVisible] = useState(false);
   const [newFolderName, setNewFolderName] = useState("");
+  
+  const [userName, setUserName] = useState(""); // New state to hold user's name
 
   const navigate = useNavigate();
 
-  const userName = localStorage.getItem("userName") || "User";
+  // Retrieve user's name from local storage when component mounts
+  useEffect(() => {
+    const name = JSON.parse(localStorage.getItem("name")) || "User";
+    setUserName(name);
+  }, []);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -47,7 +53,7 @@ export default function Workspace() {
   return (
     <div className="workspace-container">
       <div className="dropdown">
-      <button className="dropbtn" onClick={toggleDropdown}>
+        <button className="dropbtn" onClick={toggleDropdown}>
           {userName}'s workspace
         </button>
         {isOpen && (
