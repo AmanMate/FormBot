@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-// import "./Login.css";
+import { useNavigate, useLocation } from "react-router-dom";
 import { registerUser, loginUser } from "../../api/auth";
-import { useNavigate } from "react-router-dom";
 import Name from "../../assets/icons/Frame 1036.png";
 import Email from "../../assets/icons/mdi-light_email.png";
 import Password from "../../assets/icons/lock.png";
 import View from "../../assets/icons/view.png";
+import "./Login.css";
 
 export default function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [activeForm, setActiveForm] = useState("signIn");
   const [confirmPassError, setConfirmPassError] = useState("");
   const [registerFormData, setRegisterFormData] = useState({
@@ -22,6 +23,14 @@ export default function Login() {
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const form = queryParams.get("form");
+    if (form) {
+      setActiveForm(form);
+    }
+  }, [location]);
 
   const handleChange = (event) => {
     setRegisterFormData({
@@ -75,7 +84,6 @@ export default function Login() {
     }
     try {
       const result = await loginUser(loginFormData);
-      console.log(loginFormData.email);
       localStorage.setItem("email", loginFormData.email);
       if (result) {
         navigate("/dashboard");
@@ -95,7 +103,6 @@ export default function Login() {
         <div className="login-signup-form">
           {activeForm === "signIn" && (
             <div className="sign-in-div">
-              <h1>Login</h1>
               <div className="input-wrapper">
                 <img
                   src={Email}
@@ -135,7 +142,6 @@ export default function Login() {
           )}
           {activeForm === "signUp" && (
             <div className="sign-up-div">
-              <h1>Register</h1>
               <div className="input-wrapper">
                 <img src={Name} alt="Name Icon" className="input-icon" />
                 <input
@@ -207,25 +213,27 @@ export default function Login() {
                 className="login-button"
                 onClick={handleFormSubmit}
                 style={{
-                  backgroundColor: "#17A2B8",
+                  backgroundColor: "#1A5FFF",
                   color: "white",
-                  border: "1px solid #17A2B8",
+                  border: "1px solid #1A5FFF",
                 }}
               >
-                Login
+                Log In
               </button>
-              <div className="havent-dv">Have no account yet?</div>
-              <button
-                className="signup-button"
-                onClick={() => setActiveForm("signUp")}
-                style={{
-                  backgroundColor: "white",
-                  color: "#17A2B8",
-                  border: "1px solid #17A2B8",
-                }}
-              >
-                Register
-              </button>
+              <div className="button-group">
+                <div className="havent-dv">Don't have an account?</div>
+                <button
+                  className="signup-button button-inline"
+                  onClick={() => setActiveForm("signUp")}
+                  style={{
+                    backgroundColor: "transparent",
+                    color: "#1A5FFF",
+                    border: "1px solid transparent",
+                  }}
+                >
+                  Register
+                </button>
+              </div>
             </>
           ) : (
             <>
@@ -233,25 +241,27 @@ export default function Login() {
                 className="signup-button"
                 onClick={handleSubmit}
                 style={{
-                  backgroundColor: "#17A2B8",
+                  backgroundColor: "#1A5FFF",
                   color: "white",
-                  border: "1px solid #17A2B8",
+                  border: "1px solid #1A5FFF",
                 }}
               >
                 Register
               </button>
-              <div className="havent-dv">Have an account?</div>
-              <button
-                className="login-button"
-                onClick={() => setActiveForm("signIn")}
-                style={{
-                  backgroundColor: "white",
-                  color: "#17A2B8",
-                  border: "1px solid #17A2B8",
-                }}
-              >
-                Login
-              </button>
+              <div className="button-group">
+                <div className="havent-dv">Already have an account?</div>
+                <button
+                  className="login-button button-inline"
+                  onClick={() => setActiveForm("signIn")}
+                  style={{
+                    backgroundColor: "transparent",
+                    color: "#1A5FFF",
+                    border: "1px solid transparent",
+                  }}
+                >
+                  Login
+                </button>
+              </div>
             </>
           )}
         </div>

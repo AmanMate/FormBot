@@ -1,0 +1,146 @@
+.Nav-Settings {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    width: 100%;
+    max-width: 600px; /* Restrict width to make it look more centered */
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px; /* Add some padding around the content */
+}
+
+.sett-text {
+    margin-bottom: 20px;
+    margin-left: -140px;
+    font-size: x-large;
+    text-align: center; /* Center text */
+}
+
+.allInputs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 20px30;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 64%;
+    margin-left: 80px;
+    margin-right: -90px;
+    margin-bottom: 15px; /* Add space between inputs */
+}
+
+.input-icon {
+    position: absolute;
+    left: -80px; /* Adjust left position for alignment */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px; /* Adjust icon size */
+    height: 25px; /* Adjust icon size */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    height: 40px;
+    padding: 10px 10px 10px 45px; /* Adjust padding to fit icon */
+    box-sizing: border-box;
+    border: 1px solid #D0D0D0;
+    border-radius: 5px; /* Add rounded corners */
+}
+
+.updateBtn {
+    margin-top: 20px;
+    margin-left: -130px;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 400px;
+    color: white;
+    background: #1a5fff;
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Add pointer cursor */
+}
+
+
+
+.show-pass-new,
+.show-pass-old {
+    background: none;
+    border: none;
+    position: absolute;
+    height: 25px; /* Adjust height */
+    width: 25px; /* Adjust width */
+    top: 40%;
+    right: 55px; /* Adjust right position for alignment */
+    transform: translateY(-10px);
+    cursor: pointer; /* Add pointer cursor */
+}
+
+.show-pass-new img,
+.show-pass-old img {
+    width: 30px; /* Ensure the icon fits the button */
+    height: 30px; /* Maintain aspect ratio */
+}
+
+.logout {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    transform: translate(-270px, 100px);
+}
+
+.logout .submenu {
+    display: flex;
+    align-items: center;
+    cursor: pointer; /* Add pointer cursor */
+}
+
+.logout img {
+    width: 20px; /* Adjust icon size */
+    height: 20px; /* Adjust icon size */
+    margin-right: 10px;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(20%, -60%);
+    background: transparent;
+    border: 1px solid #D0D0D0;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+}
+
+.popup-content {
+    text-align: center; /* Center text in the popup */
+}
+
+.popup-confirm-button,
+.popup-cancel-button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Add pointer cursor */
+}
+
+.popup-confirm-button {
+    background: transparent;
+    color: #1a5fff;
+}
+
+.popup-cancel-button {
+    background: #D0D0D0;
+}

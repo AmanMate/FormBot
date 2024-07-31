@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
-// import "./Flow.css";
+import { createTypebot } from "../../../../api/form"; // Adjust the path as necessary
 
 export default function Flow() {
   const [popups, setPopups] = useState([]);
-  
   const [counters, setCounters] = useState({
     Text: 0,
     Image: 0,
@@ -17,17 +16,18 @@ export default function Flow() {
     Rating: 0,
     Buttons: 0,
   });
+  const [formName, setFormName] = useState("");
 
   const openPopup = (content) => {
-    const newCount = (counters[content] || 0) + 1; 
+    const newCount = (counters[content] || 0) + 1;
     setCounters({
       ...counters,
       [content]: newCount,
     });
 
     const newPopup = {
-      id: new Date().getTime(), 
-      content: `${content} ${newCount}`, 
+      id: new Date().getTime(),
+      content: `${content} ${newCount}`,
     };
     setPopups([...popups, newPopup]);
   };
@@ -53,9 +53,44 @@ export default function Flow() {
     { label: "Buttons", content: "Input Buttons" },
   ];
 
+  const saveFlowData = async (name) => {
+    const flowData = {
+      popups,
+      counters,
+      name,
+    };
+
+    try {
+      await createTypebot(flowData);
+      console.log('Flow data saved and typebot created:', flowData);
+    } catch (error) {
+      console.error('Error saving flow data:', error);
+    }
+  };
+
+  const handleShare = () => {
+    const flowData = {
+      popups,
+      counters,
+      formName,
+    };
+
+    const shareData = JSON.stringify(flowData, null, 2);
+
+    navigator.clipboard.writeText(shareData)
+      .then(() => {
+        console.log('Flow data copied to clipboard:', shareData);
+        alert('Flow data copied to clipboard!');
+      })
+      .catch(err => {
+        console.error('Failed to copy flow data:', err);
+        alert('Failed to copy flow data.');
+      });
+  };
+
   return (
     <div className="workspace">
-      <Navbar />
+      <Navbar onSave={saveFlowData} onShare={handleShare} />
       <div className="sidebar">
         <div className="bubble">
           <h2 className="font">Bubbles</h2>
@@ -117,7 +152,6 @@ export default function Flow() {
                 required
               ></textarea>
             )}
-          
             <button className="close-popup" onClick={() => closePopup(popup.id)}>
               Close
             </button>

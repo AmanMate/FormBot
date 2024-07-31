@@ -1,5 +1,5 @@
 import axios from "axios";
-const backendUrl = `http://localhost:4003/api/v1/auth`;
+const backendUrl = `https://formbot-backend-oxqm.onrender.com/api/v1/auth`;
 
 export const registerUser = async ({ name, email, password }) => {
 

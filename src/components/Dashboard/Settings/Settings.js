@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Navbar/Navbar";
-import { updateUser } from "../../api/auth"; // Removed unused import getUserDetails
+import { updateUser } from "../../../api/auth"; // Removed unused import getUserDetails
 import { useNavigate } from "react-router-dom";
 import "./Settings.css";
-import User from "../../assets/icons/Frame 1036.png";
-import Email from "../../assets/icons/mdi-light_email.png";
-import Password from "../../assets/icons/lock.png";
-import View from "../../assets/icons/view.png";
-import Logout from "../../assets/icons/Logout.png";
+import User from "../../../assets/icons/Frame 1036.png";
+import Email from "../../../assets/icons/mdi-light_email.png";
+import Password from "../../../assets/icons/lock.png";
+import View from "../../../assets/icons/view.png";
+import Logout from "../../../assets/icons/Logout.png";
 
 export default function Settings() {
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import './Dropdown.css'; 
+import './workspace.css'; 
 
 export default function Workspace() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +38,10 @@ export default function Workspace() {
     navigate("/flow");
   };
 
+  const handleSettings = () => {
+    navigate("/settings");
+  };
+
   return (
     <div className="workspace-container">
       <div className="dropdown">
@@ -46,7 +50,7 @@ export default function Workspace() {
         </button>
         {isOpen && (
           <div className="dropdown-content">
-            <a href="#settings">Settings</a>
+            <a href="#settings" onClick={handleSettings}>Settings</a>
             <a href="#logout">Logout</a>
           </div>
         )}
@@ -86,9 +90,6 @@ export default function Workspace() {
       <button className="create-typebot" onClick={handleCreateTypebot}>
         <span className="material-icons">+</span> Create a typebot
       </button>
-      <div className="form-container">
-        <div className="form">New form</div>
-      </div>
     </div>
   );
 }
